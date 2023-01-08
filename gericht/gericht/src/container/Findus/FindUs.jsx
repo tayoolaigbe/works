@@ -10,9 +10,7 @@ const FindUs = () => (
 				Find Us
 			</h1>
 			<div className="app__wrapper-content">
-				<p className="p__opensans">
-					Lane Ends Bungalow, Whatcroft Hall Lane, Rudheath, CW9 75G
-				</p>
+				<p className="p__opensans">175 Gorgie Road EH11 1TJ</p>
 				<p
 					className="p__cormorant"
 					style={{ margin: '2rem 0', color: '#DCCA87' }}
