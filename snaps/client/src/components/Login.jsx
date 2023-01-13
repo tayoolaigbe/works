@@ -32,7 +32,7 @@ const Login = () => {
 					</div>
 					<div className="shadow-2xl">
 						<GoogleLogin
-							clientId={import.meta.env.REACT_APP_GOOGLE_API_TOKEN}
+							clientId={import.meta.env.VITE_REACT_APP_GOOGLE_API_TOKEN}
 							render={renderProps => (
 								<button
 									type="button"
