@@ -6,14 +6,21 @@ import shareVideo from '../assets/share.mp4';
 import logo from '../assets/logowhite.png';
 
 const Login = () => {
-	const responseGoogle = response => {};
+	const responseGoogle = response => {
+		console.log(response);
+		console.log(import.meta.env.REACT_APP_GOOGLE_API_TOKEN);
+
+		// localStorage.setItem('user', JSON.stringify(response.profileObj));
+
+		// const { name, googleId, imageUrl } = response.profileObj;
+	};
 	return (
 		<div className="flex justify-start items-center flex-col h-screen">
 			<div className="relative w-full h-full">
 				<video
 					src={shareVideo}
 					type="video/mp4"
-					Loop
+					loop
 					controls={false}
 					muted
 					autoPlay
