@@ -6,8 +6,8 @@ Provide easy navigation
 Display current user and assigned role
 Provide a logout option
 Require users to login at least once per week
-Provide a way to remove employee access asap if needed
-Notes are assigned to specific employees
+Provide a way to remove user access asap if needed
+Notes are assigned to specific users
 Notes have a ticket #, title, note body, created & updated dates
 Notes are either OPEN or COMPLETED
 Users can be Employees, Managers, or Admins
