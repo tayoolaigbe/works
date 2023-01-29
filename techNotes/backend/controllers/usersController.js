@@ -2,7 +2,7 @@ const User = require('../models/User');
 const Note = require('../models/Note');
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
-const { findOne, rawListeners } = require('../models/Note');
+// const { findOne, rawListeners } = require('../models/Note');
 
 // @desc Get all users
 // @route GET /users
@@ -10,7 +10,7 @@ const { findOne, rawListeners } = require('../models/Note');
 
 const getAllUsers = asyncHandler(async (req, res) => {
 	const users = await User.find().select('-password').lean();
-	if (!users) {
+	if (!users?.length) {
 		return res.status(400).json({ message: 'No Users Found' });
 	}
 	res.json(users);
@@ -28,7 +28,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 	}
 
 	// Check for duplicates
-	const duplicate = await findOne({ username }).lean().exec();
+	const duplicate = await User.findOne({ username }).lean().exec();
 
 	if (duplicate) {
 		return res.status(409).json({ message: 'Username already exist' });
@@ -43,7 +43,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 
 	if (user) {
 		//created
-		res.status(201).json({ message: `New user ${username} create` });
+		res.status(201).json({ message: `New user ${username} created!` });
 	} else {
 		res.status(400).json({ message: 'Invalid user data received' });
 	}
