@@ -1,4 +1,5 @@
 import { useGetNotesQuery } from './notesApiSlice';
+import Note from './Note';
 import React from 'react';
 
 const NotesList = () => {
