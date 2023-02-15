@@ -7,9 +7,12 @@ import Rooms from './pages/Rooms';
 
 import { Routes, Route, Link } from 'react-router-dom';
 
+import Navbar from './components/Navbar';
+
 function App() {
 	return (
 		<>
+			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/rooms" element={<Rooms />} />
