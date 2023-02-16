@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const RoomContext = React.createContext();
-class context extends Component {
+class RoomProvider extends Component {
 	state = {};
 	render() {
 		return (
