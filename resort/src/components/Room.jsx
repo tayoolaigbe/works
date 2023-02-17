@@ -16,6 +16,7 @@ const Room = ({ room }) => {
 					View room
 				</Link>
 			</div>
+			<p className="room-info">{name}</p>
 		</article>
 	);
 };
