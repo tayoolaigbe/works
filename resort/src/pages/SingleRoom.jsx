@@ -8,6 +8,7 @@ import { RoomContext } from '../context';
 export default class SingleRoom extends Component {
 	constructor(props) {
 		super(props);
+		console.log(this.props);
 		this.state = {
 			slug: this.props.match.params.slug,
 			defaultBcg,
@@ -31,8 +32,26 @@ export default class SingleRoom extends Component {
 					</Link>
 				</div>
 			);
-		} else {
 		}
-		return <div>Hello from SingleRoom</div>;
+		const {
+			name,
+			description,
+			capacity,
+			size,
+			price,
+			extras,
+			breakfast,
+			pets,
+			images,
+		} = room;
+		return (
+			<Hero hero="roomsHero">
+				<Banner title={`${name} room`}>
+					<Link to="/rooms" className="btn-primary">
+						back to rooms
+					</Link>
+				</Banner>
+			</Hero>
+		);
 	}
 }
