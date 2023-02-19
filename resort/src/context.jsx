@@ -52,9 +52,29 @@ class RoomProvider extends Component {
 		return room;
 	};
 
+	handleChange = event => {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
+		console.log(name, value);
+
+		this.setState(
+			{
+				[name]: value,
+			},
+			this.filterRooms
+		);
+	};
+
 	render() {
 		return (
-			<RoomContext.Provider value={{ ...this.state, getRoom: this.getRoom }}>
+			<RoomContext.Provider
+				value={{
+					...this.state,
+					getRoom: this.getRoom,
+					handleChange: this.handleChange,
+				}}
+			>
 				{this.props.children}
 			</RoomContext.Provider>
 		);
