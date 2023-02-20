@@ -22,7 +22,11 @@ function App() {
 				</div>
 				<div className="texts">
 					<h2>Full-house battery backup coming later this year</h2>
-					<p>
+					<p className="info">
+						<a className="author">Eyitayo Olaigbe</a>
+						<time>2023-02-20 22:45</time>
+					</p>
+					<p className="summary">
 						Today at its special launch event, home backup power giant EcoFlow
 						launched a flurry of new products, including a “Whole-Home Backup
 						Power Solution.”
@@ -38,7 +42,11 @@ function App() {
 				</div>
 				<div className="texts">
 					<h2>Full-house battery backup coming later this year</h2>
-					<p>
+					<p className="info">
+						<a className="author">Eyitayo Olaigbe</a>
+						<time>2023-02-20 22:45</time>
+					</p>
+					<p className="summary">
 						Today at its special launch event, home backup power giant EcoFlow
 						launched a flurry of new products, including a “Whole-Home Backup
 						Power Solution.”
@@ -54,7 +62,11 @@ function App() {
 				</div>
 				<div className="texts">
 					<h2>Full-house battery backup coming later this year</h2>
-					<p>
+					<p className="info">
+						<a className="author">Eyitayo Olaigbe</a>
+						<time>2023-02-20 22:45</time>
+					</p>
+					<p className="summary">
 						Today at its special launch event, home backup power giant EcoFlow
 						launched a flurry of new products, including a “Whole-Home Backup
 						Power Solution.”
