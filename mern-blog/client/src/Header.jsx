@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 	return (
 		<header>
-			<a href="" className="logo">
+			<Link to="/" className="logo">
 				My Blog
-			</a>
+			</Link>
 			<nav>
 				<Link to="/login">Login</Link>
-				<Link to="/register">Login</Link>
+				<Link to="/register">Register</Link>
 			</nav>
 		</header>
 	);
