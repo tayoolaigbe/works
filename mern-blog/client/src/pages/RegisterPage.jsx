@@ -11,10 +11,10 @@ const RegisterPage = () => {
 			body: JSON.stringify({ username, password }),
 			headers: { 'Content-Type': 'application/json' },
 		});
-		if (response !== 200) {
-			alert('Registration Failed');
-		} else {
+		if (response === 200) {
 			alert('Registration Successful');
+		} else {
+			alert('Registration failed');
 		}
 	};
 	return (
