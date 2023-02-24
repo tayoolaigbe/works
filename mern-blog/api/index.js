@@ -15,12 +15,14 @@ app.use(express.json());
 mongoose.connect(process.env.CONNECTION_URL);
 
 app.post('/register', async (req, res) => {
-	const { username, password } = req.body;
+	const password = bcrypt.hashSync(req.body.password, saltRounds);
+	const { username } = req.body;
 	try {
-		const userDoc = await User.create({
+		const userDoc = new User({
 			username,
-			password: bcrypt.hashSync(password, saltRounds),
+			password,
 		});
+		await User.save();
 		res.json(userDoc);
 	} catch (error) {
 		console.log(error);
