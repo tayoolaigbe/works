@@ -9,7 +9,7 @@ const NotesList = () => {
 		isSuccess,
 		isError,
 		error,
-	} = useGetNotesQuery(null, {
+	} = useGetNotesQuery('notesList', {
 		pollingInterval: 15000,
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true,
