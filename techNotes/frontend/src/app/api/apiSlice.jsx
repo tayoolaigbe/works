@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setCredentials } from '../../features/auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: 'http://localhost:3500',
@@ -45,7 +46,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 };
 
 export const apiSlice = createApi({
-	baseQuery,
+	baseQuery: baseQueryWithReauth,
 	tagTypes: ['Note', 'User'],
 	endpoints: builder => ({}),
 });
