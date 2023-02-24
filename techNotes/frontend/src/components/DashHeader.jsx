@@ -20,7 +20,7 @@ const DashHeader = () => {
 		if (isSuccess) navigate('/');
 	}, [isSuccess, navigate]);
 
-	const onLogOutClicked = () => sendLogout();
+	// const onLogOutClicked = () => sendLogout();
 
 	if (isLoading) return <p>Logging Out...</p>;
 
