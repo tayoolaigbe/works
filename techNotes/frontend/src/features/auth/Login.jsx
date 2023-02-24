@@ -33,7 +33,7 @@ const Login = () => {
 			setUsername('');
 			setPassword('');
 			navigate('/dash');
-		} catch (error) {
+		} catch (err) {
 			if (!err.status) {
 				setErrMsg('No Server response');
 			} else if (err.status === 400) {
