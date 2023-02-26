@@ -18,6 +18,8 @@ const NOTES_REGEX = /^\/dash\/notes(\/)?$/;
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
 
 const DashHeader = () => {
+	const { isManager, isAdmin } = useAuth();
+
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
@@ -27,6 +29,11 @@ const DashHeader = () => {
 	useEffect(() => {
 		if (isSuccess) navigate('/');
 	}, [isSuccess, navigate]);
+
+	const onNewNoteClicked = () => navigate('/dash/notes/new');
+	const onNewUserClicked = () => navigate('/dash/users/new');
+	const onNotesClicked = () => navigate('/dash/notes');
+	const onUsersClicked = () => navigate('/dash/users');
 
 	// const onLogOutClicked = () => sendLogout();
 
