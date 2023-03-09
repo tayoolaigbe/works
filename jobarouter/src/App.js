@@ -2,10 +2,7 @@ import {
 	createBrowserRouter,
 	RouterProvider,
 	createRoutesFromElements,
-	Routes,
 	Route,
-	Link,
-	NavLink,
 } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -13,7 +10,7 @@ import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
 import CareersLayout from './layouts/CareersLayout';
 import Faq from './pages/help/Faq';
-import Contact from './pages/help/Contact';
+import Contact, { contactAction } from './pages/help/Contact';
 import Careers, { careersLaoder } from './pages/careers/Careers';
 import NotFound from './pages/NotFound';
 import CareerDetails, {
@@ -28,7 +25,7 @@ const router = createBrowserRouter(
 			<Route path="about" element={<About />} />
 			<Route path="help" element={<HelpLayout />}>
 				<Route path="faq" element={<Faq />} />
-				<Route path="contact" element={<Contact />} />
+				<Route path="contact" element={<Contact />} action={contactAction} />
 			</Route>
 			<Route
 				path="careers"
