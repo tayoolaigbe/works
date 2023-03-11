@@ -1,7 +1,7 @@
-import { data } from 'autoprefixer';
+import { DateTime } from 'luxon';
 
 const getWeatherData = (infoType, searchParams) => {
-	const url = new URL(`${import.meta.env.VITE_BASE_URL}/${infoType}`);
+	const url = new URL(import.meta.env.VITE_BASE_URL + '/' + infoType);
 	url.search = new URLSearchParams({
 		...searchParams,
 		appid: import.meta.env.VITE_API_KEY,
@@ -42,21 +42,21 @@ const formatCurrentWeather = data => {
 	};
 };
 
-const formatForecastWeather = () => {
+const formatForecastWeather = data => {
 	let { timezone, daily, hourly } = data;
 	daily = daily.slice(1, 6).map(d => {
 		return {
 			title: formatToLocalTime(d.dt, timezone, 'ccc'),
 			temp: d.temp.day,
-			icono: d.weather[0].icon,
+			icon: d.weather[0].icon,
 		};
 	});
 
-	hourly = daily.slice(1, 6).map(d => {
+	hourly = hourly.slice(1, 6).map(d => {
 		return {
 			title: formatToLocalTime(d.dt, timezone, 'hh:mm a'),
-			temp: d.temp.day,
-			icono: d.weather[0].icon,
+			temp: d.temp,
+			icon: d.weather[0].icon,
 		};
 	});
 
@@ -74,11 +74,11 @@ const getFormattedWeatherData = async searchParams => {
 	const formattedForecastWeather = await getWeatherData('onecall', {
 		lat,
 		lon,
-		exclude: 'current, minutely, alerts',
+		exclude: 'current,minutely,alerts',
 		units: searchParams.units,
 	}).then(formatForecastWeather);
 
-	return { ...formatCurrentWeather, ...formattedForecastWeather };
+	return { ...formattedCurrentWeather, ...formattedForecastWeather };
 };
 
 const formatToLocalTime = (
