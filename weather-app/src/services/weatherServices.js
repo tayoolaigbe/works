@@ -1,3 +1,5 @@
+import { data } from 'autoprefixer';
+
 const getWeatherData = (infoType, searchParams) => {
 	const url = new URL(`${import.meta.env.VITE_BASE_URL}/${infoType}`);
 	url.search = new URLSearchParams({
@@ -40,6 +42,27 @@ const formatCurrentWeather = data => {
 	};
 };
 
+const formatForecastWeather = () => {
+	let { timezone, daily, hourly } = data;
+	daily = daily.slice(1, 6).map(d => {
+		return {
+			title: formatToLocalTime(d.dt, timezone, 'ccc'),
+			temp: d.temp.day,
+			icono: d.weather[0].icon,
+		};
+	});
+
+	hourly = daily.slice(1, 6).map(d => {
+		return {
+			title: formatToLocalTime(d.dt, timezone, 'hh:mm a'),
+			temp: d.temp.day,
+			icono: d.weather[0].icon,
+		};
+	});
+
+	return { timezone, daily, hourly };
+};
+
 const getFormattedWeatherData = async searchParams => {
 	const formattedCurrentWeather = await getWeatherData(
 		'weather',
@@ -53,7 +76,13 @@ const getFormattedWeatherData = async searchParams => {
 		lon,
 		exclude: 'current, minutely, alerts',
 		units: searchParams.units,
-	});
+	}).then(formatForecastWeather);
 
 	return formatCurrentWeather;
 };
+
+const formatToLocalTime = (
+	secs,
+	zone,
+	format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
+) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
